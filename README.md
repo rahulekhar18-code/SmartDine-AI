@@ -380,6 +380,6 @@ If you like this project:
 
 ### Built with ❤️ using React, Node.js, Prisma & PostgreSQL
 
-**SmartDine-AI © 2025**
+**SmartDine-AI © 2026**
 
 </div>
