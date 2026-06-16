@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("CUSTOMER")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  activityLogs ActivityLog[]
+}
+
+model Table {
+  id         Int    @id @default(autoincrement())
+  tableNo    Int    @unique
+  capacity   Int
+  status     String
+}
+
+model MenuItem {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  category    String
+imageUrl String? @db.Text
+}
+
+model Reservation {
+  id           Int      @id @default(autoincrement())
+  customerName String
+  phone        String
+  reservationTime DateTime
+  status       String
+}
+
+model Inventory {
+  id        Int    @id @default(autoincrement())
+  itemName  String
+  quantity  Int
+  threshold Int
+}
+model Staff {
+  id        Int      @id @default(autoincrement())
+  name      String
+  position  String
+  phone     String
+  whatsapp  String
+  createdAt DateTime @default(now())
+}
+model Feedback {
+  id          Int      @id @default(autoincrement())
+  customerName String
+  phone       String
+  foodRating  Int
+  serviceRating Int
+  cleanlinessRating Int
+  overallRating Int
+  favouriteItem String
+  suggestion  String?
+  createdAt   DateTime @default(now())
+}
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+
+  action    String
+  module    String
+  details   String?
+
+  userId    Int
+  user      User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+model Notification {
+  id        Int      @id @default(autoincrement())
+  message   String
+  type      String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
