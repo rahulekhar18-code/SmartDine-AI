@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import api from "../services/api";
 // import { useEffect, useState, useCallback } from "react";
 import Sidebar from "../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 import socket from "../socket";
 import {
   PieChart,
@@ -23,6 +24,7 @@ import {
 
 function Dashboard() {
   const [stats, setStats] = useState({});
+  const navigate = useNavigate();
   const [activities, setActivities] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -287,7 +289,11 @@ onClick={async () => {
           </div>
         </div>
         <div className="stats-grid">
-          <div className="stat-card users">
+          <div
+  className="stat-card users"
+  style={{ cursor: "pointer" }}
+  onClick={() => navigate("/users")}
+>
             <h4>Total Users</h4>
             <h1>{stats.totalUsers || 0}</h1>
             <span>Registered Users</span>

@@ -170,9 +170,13 @@ Description Bigger
 
 
 .brand h1{
-  font-size:65px;
+  font-size:55px;
   font-weight:800;
       letter-spacing:2px;
+        white-space:nowrap;
+
+       
+
       
 
 }
@@ -379,16 +383,6 @@ Description Bigger
     accent-color:#f59e0b;
 }
 
-.forgot-password{
-    color:#f59e0b;
-    text-decoration:none;
-    font-size:20px;
-    font-weight:600;
-}
-
-.forgot-password:hover{
-    text-decoration:underline;
-}
 
 .create-account-toggle{
   width:100%;
@@ -462,10 +456,11 @@ Description Bigger
   .login-card{
     padding:25px;
   }
-
+/* 
   .brand h1{
     font-size:40px;
-  }
+    letter-spacing: 5px;
+  } */
 
   .logo-circle{
     width:80px;
@@ -485,4 +480,26 @@ Description Bigger
   .login-btn{
     font-size:18px;
   }
+}
+.forgot-password{
+  background: none;
+  border: none;
+  color: #ffb000;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.forgot-password:hover{
+  text-decoration: underline;
+}
+.forgot-password{
+    color:#f59e0b;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:600;
+}
+
+.forgot-password:hover{
+    text-decoration:underline;
 }

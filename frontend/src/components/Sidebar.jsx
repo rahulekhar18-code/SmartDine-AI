@@ -193,11 +193,13 @@ useEffect(() => {
 
         <h4>{user?.name || "Admin"}</h4>
 
-        <span>
-          {user?.role === "ADMIN"
-            ? "Restaurant Owner"
-            : "Manager"}
-        </span>
+      <span>
+  {user?.role === "ADMIN"
+    ? "Restaurant Owner"
+    : user?.role === "MANAGER"
+    ? "Manager"
+    : "Customer"}
+</span>
       </div>
 
       {menuItems.map((item) => (
@@ -214,6 +216,7 @@ className={({ isActive }) =>
           <span>{item.name}</span>
         </NavLink>
       ))}
+{user?.role !== "CUSTOMER" && (
 
      <div className="sidebar-stats">
 
@@ -284,6 +287,8 @@ className={({ isActive }) =>
 
 </div>
 
+
+)}
       <div className="logout-section">
   <button
   className="logout-btn"

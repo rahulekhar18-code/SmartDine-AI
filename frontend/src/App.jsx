@@ -1,4 +1,5 @@
 import "./App.css";
+import Users from "./pages/Users";
 
 import {
   BrowserRouter,
@@ -26,6 +27,10 @@ function App() {
 
       <Routes>
 
+<Route
+  path="/users"
+  element={<Users />}
+/>
       <Route
            path="/"
            element={<Navigate to="/login" />}

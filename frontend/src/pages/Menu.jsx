@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import Sidebar from "../components/Sidebar";
+const user = JSON.parse(localStorage.getItem("user"));
 
+const isAdmin = user?.role === "ADMIN";
+const isManager = user?.role === "MANAGER";
+const canManage = isAdmin || isManager;
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [search, setSearch] = useState("");
@@ -379,13 +383,14 @@ showForm && (
       <option value="low">💰 Price Low → High</option>
       <option value="high">💎 Price High → Low</option>
     </select>
+    {canManage && (
 <button
   className="add-item-btn"
   onClick={() => setShowForm(true)}
 >
   + Add Item
 </button>
-
+)}
   </div>
 
 </div>
@@ -448,20 +453,22 @@ showForm && (
         {item.category}
       </span>
       <div className="menu-actions">
-
+{canManage && (
   <button
   className="edit-btn"
   onClick={() => handleEdit(item)}
 >
   Edit
 </button>
+)}
+{canManage && (
 <button
   className="delete-btn"
   onClick={() => handleDelete(item.id)}
 >
   Delete
 </button>
-
+)}
 </div>
     </div>
   ))}
