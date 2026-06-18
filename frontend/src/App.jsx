@@ -15,6 +15,7 @@ import Inventory from "./pages/Inventory";
 import Tables from "./pages/Tables";
 import Settings from "./pages/Settings";
 import Analytics from "./pages/Analytics";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -81,6 +82,7 @@ function App() {
 />
 
       </Routes>
+      <Footer />
 
     </BrowserRouter>
   );

@@ -4,6 +4,8 @@ import "./Login.css";
 
 function Login() {
 
+  const [isCreatingAccount, setIsCreatingAccount] = useState(false);
+  const [name, setName] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
 
@@ -42,6 +44,29 @@ console.log("LOGIN RESPONSE =>", res.data.user);
 
     }
 
+  };
+
+  const handleCreateAccount = async () => {
+    if (!name.trim() || !email.trim() || password.length < 6) {
+      alert("Enter name, email and a password of at least 6 characters");
+      return;
+    }
+
+    try {
+      await api.post("/auth/register", {
+        name,
+        email,
+        password,
+        role: "CUSTOMER"
+      });
+
+      alert("Account created successfully. You can now login.");
+      setIsCreatingAccount(false);
+      setName("");
+      setPassword("");
+    } catch (err) {
+      alert(err.response?.data?.message || "Unable to create account");
+    }
   };
 
   return (
@@ -103,9 +128,21 @@ console.log("LOGIN RESPONSE =>", res.data.user);
       </div>
 
       <div className="brand">
-        <h1>SmartDine</h1>
-        <p>Restaurant Management System</p>
+        <h1>{isCreatingAccount ? "Create Account" : "SmartDine"}</h1>
+        <p>{isCreatingAccount ? "Register as a customer" : "Restaurant Management System"}</p>
       </div>
+
+      {isCreatingAccount && (
+        <div className="input-group">
+          <label>Name</label>
+          <input
+            type="text"
+            placeholder="Enter Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+      )}
 
       {/* Email */}
       <div className="input-group">
@@ -128,7 +165,7 @@ console.log("LOGIN RESPONSE =>", res.data.user);
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <div className="login-options">
+      {!isCreatingAccount && <div className="login-options">
 
   <label className="remember-me">
     <input type="checkbox" />
@@ -139,12 +176,20 @@ console.log("LOGIN RESPONSE =>", res.data.user);
     Forgot Password?
   </a>
 
-</div>
+</div>}
       <button
         className="login-btn"
-        onClick={handleLogin}
+        onClick={isCreatingAccount ? handleCreateAccount : handleLogin}
       >
-        Login
+        {isCreatingAccount ? "Create Customer Account" : "Login"}
+      </button>
+
+      <button
+        type="button"
+        className="create-account-toggle"
+        onClick={() => setIsCreatingAccount(!isCreatingAccount)}
+      >
+        {isCreatingAccount ? "Back to Login" : "Create Account"}
       </button>
 
     </div>

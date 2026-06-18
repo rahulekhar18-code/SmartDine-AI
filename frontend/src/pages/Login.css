@@ -126,7 +126,7 @@ body{
   line-height:1.1;
   margin-bottom:30px;
 }
-/*Description Bigger*/
+Description Bigger
 .hero-content p{
   font-size:40px;
   line-height:1.8;
@@ -388,6 +388,37 @@ body{
 
 .forgot-password:hover{
     text-decoration:underline;
+}
+
+.create-account-toggle{
+  width:100%;
+  margin-top:14px;
+  padding:12px;
+  border:1px solid #f59e0b;
+  border-radius:12px;
+  background:transparent;
+  color:#f59e0b;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.create-account-toggle:hover{
+  background:rgba(245,158,11,.12);
+}
+
+.app-footer{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:9999;
+  padding:10px 15px;
+  background:rgba(2,6,23,.95);
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#cbd5e1;
+  text-align:center;
+  font-size:13px;
 }
 
 
