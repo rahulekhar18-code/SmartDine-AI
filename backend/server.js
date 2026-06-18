@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
@@ -16,6 +17,8 @@ const feedbackRoutes =require("./routes/feedbackRoutes");
 const activityRoutes =require("./routes/activityRoutes");
 const notificationRoutes =require("./routes/notificationRoutes");
 
+const otpRoutes = require("./routes/otpRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -31,14 +34,14 @@ app.use(
   "/api/notifications",
   notificationRoutes
 );
-
+app.use("/api/otp", otpRoutes);
 app.use(express.urlencoded({
   extended: true,
   limit: "50mb"
 }));
 app.use("/api/staff", staffRoutes);
 app.use("/api/feedback", feedbackRoutes);
-
+app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/menu", menuRoutes);
 app.use("/api/reservations", reservationRoutes);
