@@ -569,40 +569,38 @@
 }
 
 .menu-topbar{
-  margin-left:260px;
+  margin-left:280px;
   padding:25px 30px;
 
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:20px;
-
   position:sticky;
   top:0;
   z-index:100;
-
   background:#0f172a;
 }
 
-.search-box{
-  flex:1;
+.search-box {
+flex:1
 }
+
 
 .search-box input{
   width:100%;
   max-width:450px;
 
-  padding:15px 20px;
+  padding:10px ;
 
-  border:none;
   outline:none;
-
+margin-top:-100px;
   border-radius:15px;
 
   background:var(--card);
   color:white;
 
-  font-size:35px;
+  font-size:34px;
 
   box-shadow:
   0 5px 15px rgba(0,0,0,.3);
